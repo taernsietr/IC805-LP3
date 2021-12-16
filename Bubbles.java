@@ -9,11 +9,11 @@ public class Bubbles extends PApplet {
   // Animation parameters
   private int canvasWidth = 1920;
   private int canvasHeight = 1080;
-  private int maxParticleSize = 40;
   private float maxSpeed = 3.0f;
-  private float maxForce = 0.3f;
+  private float maxForce = 0.5f;
   private float minMass = 0.001f;
   private float minSize = 0.1f;
+  private float maxSize = 40.f;
   private static int particleNumber = 75;
 
   public static void main(String[] args) {
@@ -44,7 +44,7 @@ public class Bubbles extends PApplet {
 
   // Allows particles to move to the opposite side when moving out of bounds
   public void clipParticle(Particle p) {
-    float offset = p.size * maxParticleSize;
+    float offset = p.size * maxSize;
 
     if(p.pos.x <= 0 - offset)
       p.pos.set(canvasWidth, p.pos.y);
@@ -74,8 +74,8 @@ public class Bubbles extends PApplet {
            map(particles.get(i).size, minSize, 1.0f, 0, 192));
       ellipse(particles.get(i).pos.x,
               particles.get(i).pos.y,
-              particles.get(i).size * maxParticleSize,
-              particles.get(i).size * maxParticleSize);
+              particles.get(i).size * maxSize,
+              particles.get(i).size * maxSize);
     }
   }
 
