@@ -7,8 +7,8 @@ public class Bubbles extends PApplet {
   private int canvasHeight = 1080;
   private float maxSpeed = 3.0f;
   private float maxForce = 0.3f;
-  private int maxParticleSize = 40;
-  private static int particleNumber = 40;
+  private int maxParticleSize = 50;
+  private static int particleNumber = 75;
   private ArrayList<Particle> particles = new ArrayList<Particle>();
   private Random rand = new Random();
 
@@ -28,7 +28,7 @@ public class Bubbles extends PApplet {
               rand.nextInt(0, canvasHeight)
             ),
             new PVector(
-              rand.nextFloat(-maxSpeed, maxSpeed),     // initial speed
+              rand.nextFloat(-maxSpeed, maxSpeed), // initial speed
               rand.nextFloat(-maxSpeed, maxSpeed)
             ),
             new PVector(0, 0),                     // initial acceleration
@@ -40,13 +40,15 @@ public class Bubbles extends PApplet {
   }
 
   public void clipParticle(Particle p) {
-    if(p.pos.x <= 0)
+    float offset = p.size * maxParticleSize;
+
+    if(p.pos.x <= 0 - offset)
       p.pos.set(canvasWidth, p.pos.y);
-    else if(p.pos.x >= canvasWidth)
+    else if(p.pos.x >= canvasWidth + offset)
       p.pos.set(0, p.pos.y);
-    if(p.pos.y <= 0)
+    if(p.pos.y <= 0 - offset)
       p.pos.set(p.pos.x, canvasHeight);
-    else if(p.pos.y >= canvasHeight)
+    else if(p.pos.y >= canvasHeight + offset)
       p.pos.set(p.pos.x, 0);
   }
 
