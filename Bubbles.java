@@ -3,14 +3,18 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Bubbles extends PApplet {
-  private int canvasWidth = 1920;
-  private int canvasHeight = 1080;
-  private float maxSpeed = 3.0f;
-  private float maxForce = 0.3f;
-  private int maxParticleSize = 40;
-  private static int particleNumber = 75;
   private ArrayList<Particle> particles = new ArrayList<Particle>();
   private Random rand = new Random();
+
+  // Animation parameters
+  private int canvasWidth = 1920;
+  private int canvasHeight = 1080;
+  private int maxParticleSize = 40;
+  private float maxSpeed = 3.0f;
+  private float maxForce = 0.3f;
+  private float minMass = 0.001f;
+  private float minSize = 0.1f;
+  private static int particleNumber = 75;
 
   public static void main(String[] args) {
     String[] processingArgs = { "Bubbles" };
@@ -28,8 +32,8 @@ public class Bubbles extends PApplet {
             new PVector(rand.nextFloat(-maxSpeed, maxSpeed),  // initial speed
                         rand.nextFloat(-maxSpeed, maxSpeed)),
             new PVector(0, 0),                                // initial acceleration
-            rand.nextFloat(0.5f, 1.0f),                       // initial size
-            rand.nextFloat(0.001f, 1.0f))                      // mass
+            rand.nextFloat(minMass, 1.0f),                    // mass
+            rand.nextFloat(minSize, 1.0f))                    // size
       );
     }
   }
@@ -52,7 +56,7 @@ public class Bubbles extends PApplet {
   }
 
   public void draw() {
-    background(30, 30, 60);
+    background(40, 40, 40);
     for(int i = 0; i < particles.size(); i++) {
       particles.get(i).force(new PVector(rand.nextFloat(-maxForce, maxForce) * particles.get(i).mass, 
                                          rand.nextFloat(-maxForce, maxForce) * particles.get(i).mass));
@@ -61,9 +65,9 @@ public class Bubbles extends PApplet {
       clipParticle(particles.get(i));
 
       noStroke();
-      fill(map(particles.get(i).size, 0.01f, 1.0f, 0, 191),
-           map(particles.get(i).size, 0.01f, 1.0f, 0, 63),
-           map(particles.get(i).size, 0.01f, 1.0f, 0, 191));
+      fill(map(particles.get(i).size, minSize, 1.0f, 0, 255),
+           map(particles.get(i).size, minSize, 1.0f, 0, 192),
+           map(particles.get(i).size, minSize, 1.0f, 0, 192));
       ellipse(particles.get(i).pos.x,
               particles.get(i).pos.y,
               particles.get(i).size * maxParticleSize,
