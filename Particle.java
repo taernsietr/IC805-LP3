@@ -1,4 +1,4 @@
-import processing.core.PVector;
+import processing.core.*;
 
 public class Particle {
   private static float spdLimit;
