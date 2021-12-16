@@ -59,6 +59,7 @@ public class Bubbles extends PApplet {
   public void draw() {
     background(40, 40, 40);
     for(int i = 0; i < particles.size(); i++) {
+
       // Add random force to particles
       particles.get(i).force(new PVector(rand.nextFloat(-maxForce, maxForce) * particles.get(i).mass, 
                                          rand.nextFloat(-maxForce, maxForce) * particles.get(i).mass));
