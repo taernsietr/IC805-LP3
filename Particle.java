@@ -1,7 +1,7 @@
 import processing.core.PVector;
 
 public class Particle {
-  private final float spdLimit = 1.0f;
+  private static float spdLimit;
 
   public PVector pos;
   public PVector spd;
@@ -15,6 +15,10 @@ public class Particle {
     this.acc = acc;
     this.mass = mass;
     this.size = size;
+  }
+
+  public static void setSpeedLimit(float limit) {
+    spdLimit = limit;
   }
 
   public void force(PVector force) {
