@@ -6,9 +6,16 @@ public class Bubbles extends PApplet {
   private final int canvasWidth = 800;
   private final int canvasHeight = 600;
   private final float maxSpd = 2.0f;
+  private final static int particleNumber = 20;
   
   private ArrayList<Particle> particles = new ArrayList<Particle>();
   private Random rand = new Random();
+
+  public static void main(String[] args) {
+    String[] processingArgs = { "Bubbles" };
+    Bubbles bubbles = new Bubbles(particleNumber);
+    PApplet.runSketch(processingArgs, bubbles);
+  }
 
   public Bubbles(int particleCount) {
     for(int a = 0; a <= particleCount; a++) {
