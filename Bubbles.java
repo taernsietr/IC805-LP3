@@ -7,7 +7,7 @@ public class Bubbles extends PApplet {
   private int canvasHeight = 1080;
   private float maxSpeed = 3.0f;
   private float maxForce = 0.3f;
-  private int maxParticleSize = 50;
+  private int maxParticleSize = 40;
   private static int particleNumber = 75;
   private ArrayList<Particle> particles = new ArrayList<Particle>();
   private Random rand = new Random();
@@ -23,18 +23,13 @@ public class Bubbles extends PApplet {
     for(int a = 0; a <= particleCount; a++) {
       this.particles.add(
           new Particle(
-            new PVector(
-              rand.nextInt(0, canvasWidth),        // initial position
-              rand.nextInt(0, canvasHeight)
-            ),
-            new PVector(
-              rand.nextFloat(-maxSpeed, maxSpeed), // initial speed
-              rand.nextFloat(-maxSpeed, maxSpeed)
-            ),
-            new PVector(0, 0),                     // initial acceleration
-            rand.nextFloat(0.01f, 1.0f),           // mass
-            rand.nextFloat(0.33f, 1.0f)            // size
-          )
+            new PVector(rand.nextInt(0, canvasWidth),         // initial position
+                        rand.nextInt(0, canvasHeight)),
+            new PVector(rand.nextFloat(-maxSpeed, maxSpeed),  // initial speed
+                        rand.nextFloat(-maxSpeed, maxSpeed)),
+            new PVector(0, 0),                                // initial acceleration
+            rand.nextFloat(0.5f, 1.0f),                       // initial size
+            rand.nextFloat(0.001f, 1.0f))                      // mass
       );
     }
   }
