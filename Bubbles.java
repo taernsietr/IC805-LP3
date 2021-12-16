@@ -22,6 +22,10 @@ public class Bubbles extends PApplet {
     PApplet.runSketch(processingArgs, bubbles);
   }
 
+  public void settings() {
+    size(canvasWidth, canvasHeight);
+  }
+
   public Bubbles(int particleCount) {
     Particle.setSpeedLimit(maxSpeed);
     for(int a = 0; a <= particleCount; a++) {
@@ -38,6 +42,7 @@ public class Bubbles extends PApplet {
     }
   }
 
+  // Allows particles to move to the opposite side when moving out of bounds
   public void clipParticle(Particle p) {
     float offset = p.size * maxParticleSize;
 
@@ -51,19 +56,18 @@ public class Bubbles extends PApplet {
       p.pos.set(p.pos.x, 0);
   }
 
-  public void settings() {
-    size(canvasWidth, canvasHeight);
-  }
-
   public void draw() {
     background(40, 40, 40);
     for(int i = 0; i < particles.size(); i++) {
+      // Add random force to particles
       particles.get(i).force(new PVector(rand.nextFloat(-maxForce, maxForce) * particles.get(i).mass, 
                                          rand.nextFloat(-maxForce, maxForce) * particles.get(i).mass));
       
+      // Update particle acceleration, speed and position
       particles.get(i).update();
       clipParticle(particles.get(i));
 
+      // Draw particles
       noStroke();
       fill(map(particles.get(i).size, minSize, 1.0f, 0, 255),
            map(particles.get(i).size, minSize, 1.0f, 0, 192),
