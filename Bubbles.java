@@ -3,10 +3,12 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Bubbles extends PApplet {
-  private int canvasWidth = 800;
-  private int canvasHeight = 600;
-  private float maxSpd = 2.0f;
-  private static int particleNumber = 20;
+  private int canvasWidth = 1920;
+  private int canvasHeight = 1080;
+  private float maxSpeed = 3.0f;
+  private float maxForce = 0.3f;
+  private int maxParticleSize = 40;
+  private static int particleNumber = 40;
   private ArrayList<Particle> particles = new ArrayList<Particle>();
   private Random rand = new Random();
 
@@ -17,7 +19,7 @@ public class Bubbles extends PApplet {
   }
 
   public Bubbles(int particleCount) {
-    Particle.setSpeedLimit(maxSpd);
+    Particle.setSpeedLimit(maxSpeed);
     for(int a = 0; a <= particleCount; a++) {
       this.particles.add(
           new Particle(
@@ -26,8 +28,8 @@ public class Bubbles extends PApplet {
               rand.nextInt(0, canvasHeight)
             ),
             new PVector(
-              rand.nextFloat(-maxSpd, maxSpd),     // initial speed
-              rand.nextFloat(-maxSpd, maxSpd)
+              rand.nextFloat(-maxSpeed, maxSpeed),     // initial speed
+              rand.nextFloat(-maxSpeed, maxSpeed)
             ),
             new PVector(0, 0),                     // initial acceleration
             rand.nextFloat(0.01f, 1.0f),           // mass
@@ -55,8 +57,8 @@ public class Bubbles extends PApplet {
   public void draw() {
     background(30, 30, 60);
     for(int i = 0; i < particles.size(); i++) {
-      particles.get(i).force(new PVector(rand.nextFloat(-0.1f, 0.1f) * particles.get(i).mass, 
-                                         rand.nextFloat(-0.1f, 0.1f) * particles.get(i).mass));
+      particles.get(i).force(new PVector(rand.nextFloat(-maxForce, maxForce) * particles.get(i).mass, 
+                                         rand.nextFloat(-maxForce, maxForce) * particles.get(i).mass));
       
       particles.get(i).update();
       clipParticle(particles.get(i));
@@ -67,8 +69,8 @@ public class Bubbles extends PApplet {
            map(particles.get(i).size, 0.01f, 1.0f, 0, 191));
       ellipse(particles.get(i).pos.x,
               particles.get(i).pos.y,
-              particles.get(i).size * 30,
-              particles.get(i).size * 30);
+              particles.get(i).size * maxParticleSize,
+              particles.get(i).size * maxParticleSize);
     }
   }
 
