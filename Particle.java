@@ -1,6 +1,8 @@
 import processing.core.PVector;
 
 public class Particle {
+  private final float spdLimit = 1.0f;
+
   public PVector pos;
   public PVector spd;
   public PVector acc;
@@ -21,10 +23,8 @@ public class Particle {
 
   public void update() {
     this.spd.add(this.acc);
+    this.spd.limit(spdLimit);
     this.pos.add(this.spd);
   }
 
-  public void display() {
-
-  }
 }
