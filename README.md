@@ -2,6 +2,12 @@
 
 Repositório criado para a tarefa da disciplina. Envolve a criação de uma demonstração gráfica em Java, utilizando a biblioteca [Processing](https://processing.org/).  
 
+### Bubbles
+
+Simula partículas/bolhas movendo-se aleatoriamente.
+
+<hr>
+
 Para rodar, é necessário incluir `/lib/core.jar` no classpath.  
 
 #### Linux
@@ -17,7 +23,3 @@ java -cp ".:lib/*" Bubbles
 javac -cp ".;lib\*" Bubbles.java
 java -cp ".;lib\*" Bubbles
 ```
-
-###### Bubbles
-
-Simula partículas/bolhas movendo-se aleatoriamente.
