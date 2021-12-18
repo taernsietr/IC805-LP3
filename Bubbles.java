@@ -1,4 +1,5 @@
-import processing.core.*;
+import processing.core.PApplet;
+import processing.core.PVector;
 import java.util.ArrayList;
 import java.util.Random;
 

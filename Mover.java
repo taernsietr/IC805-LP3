@@ -7,7 +7,6 @@ public class Mover implements Moving, Physical {
   protected PVector pos;
   protected PVector spd = new PVector (0.0f, 0.0f);
   protected PVector acc = new PVector (0.0f, 0.0f);
-
   protected float mass;
   protected float size;
 
