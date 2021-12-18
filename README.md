@@ -15,7 +15,6 @@ Para rodar, é necessário incluir `/lib/core.jar` no classpath.
 ```
 javac -cp ".:lib/*" Bubbles.java
 java -cp ".:lib/*" Bubbles
-
 ```
 #### Windows
 

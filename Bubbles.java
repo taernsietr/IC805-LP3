@@ -7,8 +7,8 @@ public class Bubbles extends PApplet {
   private Random rand = new Random();
 
   // Animation parameters
-  private int canvasWidth = 1920;
-  private int canvasHeight = 1080;
+  private int canvasWidth = 1024;
+  private int canvasHeight = 768;
   private float maxSpeed = 3.0f;
   private float maxForce = 0.5f;
   private float minMass = 0.001f;

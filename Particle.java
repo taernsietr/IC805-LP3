@@ -1,13 +1,13 @@
 import processing.core.*;
 
 public class Particle {
-  private static float spdLimit;
 
-  public PVector pos;
-  public PVector spd;
-  public PVector acc;
-  public float mass;
-  public float size;
+  protected static float spdLimit;
+  protected PVector pos;
+  protected PVector spd;
+  protected PVector acc;
+  protected float mass;
+  protected float size;
 
   public Particle(PVector pos, PVector spd, PVector acc, float mass, float size) {
     this.pos = pos;
