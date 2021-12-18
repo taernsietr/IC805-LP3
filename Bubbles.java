@@ -60,23 +60,25 @@ public class Bubbles extends PApplet {
     background(40, 40, 40);
     for(int i = 0; i < particles.size(); i++) {
 
+      Particle cur = particles.get(i);
+
       // Add random force to particles
-      particles.get(i).force(new PVector(rand.nextFloat(-maxForce, maxForce) * particles.get(i).mass, 
-                                         rand.nextFloat(-maxForce, maxForce) * particles.get(i).mass));
+      cur.force(new PVector(rand.nextFloat(-maxForce, maxForce) * cur.mass, 
+                                         rand.nextFloat(-maxForce, maxForce) * cur.mass));
       
       // Update particle acceleration, speed and position
-      particles.get(i).update();
-      clipParticle(particles.get(i));
+      cur.update();
+      clipParticle(cur);
 
       // Draw particles
       noStroke();
-      fill(map(particles.get(i).size, minSize, 1.0f, 0, 255),
-           map(particles.get(i).size, minSize, 1.0f, 0, 192),
-           map(particles.get(i).size, minSize, 1.0f, 0, 192));
-      ellipse(particles.get(i).pos.x,
-              particles.get(i).pos.y,
-              particles.get(i).size * maxSize,
-              particles.get(i).size * maxSize);
+      fill(map(cur.size, minSize, 1.0f, 0, 255),
+           map(cur.size, minSize, 1.0f, 0, 192),
+           map(cur.size, minSize, 1.0f, 0, 192));
+      ellipse(cur.pos.x,
+              cur.pos.y,
+              cur.size * maxSize,
+              cur.size * maxSize);
     }
   }
 
