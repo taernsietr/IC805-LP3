@@ -1,4 +1,4 @@
-public interface Object {
+public interface Physical {
 
   public void setMass(float mass);
   public void setSize(float size);

@@ -1,6 +1,6 @@
 import processing.core.PVector;
 
-public interface Mover {
+public interface Moving {
 
   public void setMaxSpeed(float speed);
   public void setMaxAccel(float speed);

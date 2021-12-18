@@ -9,6 +9,7 @@ public class Particle {
   protected float mass;
   protected float size;
 
+  // Constructor
   public Particle(PVector pos, PVector spd, PVector acc, float mass, float size) {
     this.pos = pos;
     this.spd = spd;
@@ -17,10 +18,12 @@ public class Particle {
     this.size = size;
   }
 
+  // Attribute changing methods
   public static void setSpeedLimit(float limit) {
     spdLimit = limit;
   }
 
+  // Movement functions
   public void force(PVector force) {
     this.acc.add(force);
   }
