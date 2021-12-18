@@ -17,8 +17,7 @@ public class Fireworks extends PApplet {
   // Main method
   public static void main(String[] args) {
     String[] processingArgs = { "Fireworks" };
-    Fireworks fireworks = new Fireworks();
-    PApplet.runSketch(processingArgs, fireworks);
+    PApplet.main(processingArgs);
   }
 
   // Processing methods
