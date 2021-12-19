@@ -34,9 +34,9 @@ public class Debris extends Mover {
 
   public void draw() {
     this.p.noStroke();
-    this.p.fill(this.p.map(this.ttl, 0.0f, this.lifetime, 30, 255), 30, 30);
+    this.p.fill(this.p.map(this.ttl, 0.0f, this.lifetime * 0.03f, 40, 255), 40, 20);
     this.p.circle(this.pos.x, this.pos.y, this.size);
-    System.out.println(this.ttl + " " + this.lifetime + " " + this.mass);
+    System.out.println(this.ttl + " " + this.lifetime);
   }
 
 }
