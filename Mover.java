@@ -2,6 +2,7 @@ import processing.core.*;
 
 public class Mover implements Moving, Physical {
 
+  protected PApplet p;
   protected static float maxSpeed;
   protected static float maxAccel;
   protected PVector pos;
@@ -11,11 +12,13 @@ public class Mover implements Moving, Physical {
   protected float size;
 
   // Constructor
-  public Mover(float x, float y) {
+  public Mover(PApplet p, float x, float y) {
+    this.p = p;
     this.pos = new PVector(x, y);
   }
 
-  public Mover(float x, float y, float mass, float size) {
+  public Mover(PApplet p, float x, float y, float mass, float size) {
+    this.p = p;
     this.pos = new PVector(x, y);
     this.mass = mass;
     this.size = size;
@@ -64,6 +67,12 @@ public class Mover implements Moving, Physical {
     this.spd.add(this.acc);
     this.spd.limit(maxSpeed);
     this.pos.add(this.spd);
+  }
+
+  public void draw() {
+    this.p.noStroke();
+    this.p.fill(255, 255, 255);
+    this.p.circle(this.pos.x, this.pos.y, this.size);
   }
   
 }

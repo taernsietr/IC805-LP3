@@ -1,30 +1,26 @@
-import processing.core.*;
+import processing.core.PApplet;
+import processing.core.PVector;
 
 public class Debris extends Mover {
 
-  protected static float maxSpeed;
-  protected static float maxAccel;
-  protected PVector pos;
-  protected PVector spd = new PVector (0.0f, 0.0f);
-  protected PVector acc = new PVector (0.0f, 0.0f);
-  protected float mass;
-  protected float size;
+  protected int ttl;
 
-  private int TTL;
-
-  // Constructor
-  public Debris(float x, float y, float mass, float size) {
-    this.pos = new PVector(x, y);
-    this.mass = mass;
-    this.size = size;
+  public Debris(PApplet p, float x, float y) {
+    super(p, x, y);
   }
 
-  public void update() {
-    this.spd.add(this.acc);
-    this.spd.limit(maxSpeed);
-    this.pos.add(this.spd);
-    this.TTL -= 1;
+  public Debris(PApplet p, float x, float y, float mass, float size) {
+    super(p, x, y, mass, size);
   }
 
-  
+  public void setTTL(int ttl) {
+    this.ttl = ttl;
+  }
+
+  public void draw() {
+    this.p.noStroke();
+    this.p.fill(this.p.map(mass, 0.0f, 1.0f, 0, 255), 30, 30);
+    this.p.circle(this.pos.x, this.pos.y, this.size);
+  }
+
 }
