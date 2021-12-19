@@ -26,7 +26,7 @@ public class Fireworks extends PApplet {
   }
 
   public void mousePressed() {
-    this.objs.add(new Debris(this, mouseX, mouseY, 1.0f, 10.0f));
+    this.objs.add(new Debris(this, mouseX, mouseY, 1.0f, 1.0f));
   }
 
   public Fireworks() {
