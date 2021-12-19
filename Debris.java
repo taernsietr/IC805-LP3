@@ -30,6 +30,7 @@ public class Debris extends Mover {
     this.spd.limit(maxSpeed);
     this.pos.add(this.spd);
     this.ttl -= 0.01f;
+    System.out.println(this.spd);
   }
 
   public void draw() {

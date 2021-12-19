@@ -13,7 +13,7 @@ public class Fireworks extends PApplet {
   private int canvasHeight = 800;
   private float maxSpeed = 3.0f;
   private float maxAccel = 0.5f;
-  private PVector gravity = new PVector(0.00f, 0.005f);
+  private PVector gravity = new PVector(0.00f, 0.05f);
 
   // Main method
   public static void main(String[] args) {
@@ -34,21 +34,12 @@ public class Fireworks extends PApplet {
       rand.nextFloat(2.0f, 50.0f),
       rand.nextFloat(2.0f, 20.0f));
       e.setLifetime(2.0f);
+      e.setMaxSpeed(2.0f);
       this.debris.add(e);
     }
   }
-/*
-    Debris d = new Debris(this, mouseX, mouseY, 1.0f, 10.0f);
-    d.setMaxAccel(maxAccel);
-    d.setMaxSpeed(maxSpeed);
-    d.setLifetime(2.0f);
-    this.debris.add(d);
 
-  public Fireworks() {
-  }
-*/
   public void draw() {
-    System.out.println(debris.size());
     background(0, 0, 0);
     for(int i = 0; i < debris.size(); i++) {
       Debris d = debris.get(i);
