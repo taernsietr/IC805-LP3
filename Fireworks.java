@@ -9,8 +9,8 @@ public class Fireworks extends PApplet {
   private ArrayList<Payload> payloads = new ArrayList<Payload>();
 
   // Animation parameters
-  private int canvasWidth = 800;
-  private int canvasHeight = 800;
+  private int canvasWidth = 1280;
+  private int canvasHeight = 720;
   private float maxSpeed = 3.0f;
   private float maxAccel = 0.35f;
   private PVector gravity = new PVector(0.00f, 0.05f);
@@ -45,14 +45,13 @@ public class Fireworks extends PApplet {
                                       p.getPos().x,
                                       p.getPos().y, 
                                       1.0f, 5.0f, 5.0f); // mass, size, lifetime
-          e.force(rand.nextFloat(-0.5f, 0.5f), rand.nextFloat(-0.5f, 0.0f));
+          e.force(rand.nextFloat(-0.4f, 0.4f), rand.nextFloat(-1.0f, 0.2f));
           debris.add(e);
         }
         payloads.remove(p);
       }
     }
     for(int k = 0; k < debris.size(); k++) {
-      System.out.println(debris.size());
       Ephemeral d = debris.get(k);
       d.force(gravity);
       d.update();
