@@ -6,6 +6,7 @@ import java.util.Random;
 public class Fireworks extends PApplet {
   private Random rand = new Random();
   private ArrayList<Ephemeral> debris = new ArrayList<Ephemeral>();
+  private ArrayList<Payload> payloads = new ArrayList<Payload>();
 
   // Animation parameters
   private int canvasWidth = 800;
@@ -26,27 +27,33 @@ public class Fireworks extends PApplet {
   }
 
   public void mousePressed() {
-    for(int j = 0; j < 30; j++) {
-      Ephemeral e = new Ephemeral(this,
-      rand.nextFloat(0.0f, canvasWidth),
-      rand.nextFloat(0.0f, 30.0f), 
-      rand.nextFloat(2.0f, 50.0f),
-      rand.nextFloat(2.0f, 10.0f));
-      e.setLifetime(2.0f);
-      e.setMaxSpeed(2.0f);
-      this.debris.add(e);
-    }
+    Payload p = new Payload(this, mouseX, mouseY, 1.0f, 1.0f, 2.0f);
+    p.force(rand.nextFloat(-5.0f, 5.0f), -10.0f);
+    this.payloads.add(p);
   }
 
   public void draw() {
     background(0, 0, 0);
-    for(int i = 0; i < debris.size(); i++) {
-      Ephemeral d = debris.get(i);
+    for(int i = 0; i < payloads.size(); i++) {
+      Payload p = payloads.get(i);
+      p.force(gravity);
+      p.update();
+      p.draw();
+      if (p.getTTL() <= 0) {
+        for(int j = 0; j < p.getMass(); j++) {
+          Ephemeral e = new Ephemeral(this, p.getPos().x, p.getPos().y);
+          debris.add(e);
+        }
+        payloads.remove(p);
+      }
+    }
+    for(int k = 0; k < debris.size(); k++) {
+      Ephemeral d = debris.get(k);
       d.force(gravity);
       d.update();
       d.draw();
       if (d.getTTL() <= 0)
-        debris.remove(i);
+        debris.remove(k);
     }
   }
 }

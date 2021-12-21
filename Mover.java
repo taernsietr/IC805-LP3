@@ -1,10 +1,11 @@
-import processing.core.*;
+import processing.core.PApplet;
+import processing.core.PVector;
 
 public class Mover implements Moving, Physical {
 
   protected PApplet p;
-  protected static float maxSpeed;
-  protected static float maxAccel;
+  protected static float maxSpeed = 10.0f;
+  protected static float maxAccel = 0.05f;
   protected PVector pos;
   protected PVector spd = new PVector (0.0f, 0.0f);
   protected PVector acc = new PVector (0.0f, 0.0f);
@@ -51,6 +52,14 @@ public class Mover implements Moving, Physical {
     this.size += size;
     if (this.size < 0)
       this.size = 0;
+  }
+
+  public PVector getPos() {
+    return this.pos;
+  }
+  
+  public float getMass() {
+    return this.mass;
   }
 
   // Movement functions
