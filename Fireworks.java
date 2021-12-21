@@ -5,8 +5,7 @@ import java.util.Random;
 
 public class Fireworks extends PApplet {
   private Random rand = new Random();
-  private ArrayList<Mover> movers = new ArrayList<Mover>();
-  private ArrayList<Debris> debris = new ArrayList<Debris>();
+  private ArrayList<Ephemeral> debris = new ArrayList<Ephemeral>();
 
   // Animation parameters
   private int canvasWidth = 800;
@@ -28,7 +27,7 @@ public class Fireworks extends PApplet {
 
   public void mousePressed() {
     for(int j = 0; j < 30; j++) {
-      Debris e = new Debris(this,
+      Ephemeral e = new Ephemeral(this,
       rand.nextFloat(0.0f, canvasWidth),
       rand.nextFloat(0.0f, 30.0f), 
       rand.nextFloat(2.0f, 50.0f),
@@ -42,7 +41,7 @@ public class Fireworks extends PApplet {
   public void draw() {
     background(0, 0, 0);
     for(int i = 0; i < debris.size(); i++) {
-      Debris d = debris.get(i);
+      Ephemeral d = debris.get(i);
       d.force(gravity);
       d.update();
       d.draw();

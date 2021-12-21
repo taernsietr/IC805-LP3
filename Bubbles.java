@@ -16,6 +16,7 @@ public class Bubbles extends PApplet {
   private float minSize = 0.1f;
   private float maxSize = 40.f;
   private static int particleNumber = 75;
+  private static int refresh = 60;
 
   public static void main(String[] args) {
     String[] processingArgs = { "Bubbles" };
@@ -25,6 +26,10 @@ public class Bubbles extends PApplet {
 
   public void settings() {
     size(canvasWidth, canvasHeight);
+  }
+
+  public void setup() {
+    frameRate(refresh);
   }
 
   public Bubbles(int particleCount) {
