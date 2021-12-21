@@ -58,6 +58,10 @@ public class Mover implements Moving, Physical {
     return this.pos;
   }
   
+  public PVector getSpd() {
+    return this.spd;
+  }
+
   public float getMass() {
     return this.mass;
   }
