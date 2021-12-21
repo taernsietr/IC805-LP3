@@ -29,7 +29,7 @@ public class Bubbles extends PApplet {
 
   public Bubbles(int particleCount) {
     Particle.setSpeedLimit(maxSpeed);
-    for(int a = 0; a <= particleCount; a++) {
+    for(int a = 0; a <= particleCount-1; a++) {
       this.particles.add(
           new Particle(
             new PVector(rand.nextInt(0, canvasWidth),         // initial position

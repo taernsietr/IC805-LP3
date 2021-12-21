@@ -29,10 +29,10 @@ public class Fireworks extends PApplet {
   public void mousePressed() {
     for(int j = 0; j < 30; j++) {
       Debris e = new Debris(this,
-      rand.nextFloat(0.0f, canvasWidth-30.0f),
+      rand.nextFloat(0.0f, canvasWidth),
       rand.nextFloat(0.0f, 30.0f), 
       rand.nextFloat(2.0f, 50.0f),
-      rand.nextFloat(2.0f, 20.0f));
+      rand.nextFloat(2.0f, 10.0f));
       e.setLifetime(2.0f);
       e.setMaxSpeed(2.0f);
       this.debris.add(e);

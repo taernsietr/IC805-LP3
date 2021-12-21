@@ -29,8 +29,7 @@ public class Debris extends Mover {
     this.spd.add(this.acc);
     this.spd.limit(maxSpeed);
     this.pos.add(this.spd);
-    this.ttl -= 0.01f;
-    System.out.println(this.spd);
+    this.ttl -= 1.0f;
   }
 
   public void draw() {
@@ -39,12 +38,11 @@ public class Debris extends Mover {
         this.p.map(
           this.ttl,
           0.0f,
-          this.lifetime * (this.mass / this.size) * 10.0f,
-          10,
+          this.lifetime - this.mass,
+          20,
           255),
-        10, 10);
+        20, 20);
     this.p.circle(this.pos.x, this.pos.y, this.size);
-    //System.out.println(this.ttl + " " + this.lifetime);
   }
 
 }
